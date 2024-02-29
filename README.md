@@ -140,5 +140,5 @@
 
 
 <h2><b>Диаграмма классов</b></h2>
-![image](https://github.com/BaranovskyA/ByteBrew-Coffee-Roasters/assets/54361221/9be4118b-d1c5-4b37-a136-516cbbeabed5)
 
+ ![image](https://github.com/BaranovskyA/ByteBrew-Coffee-Roasters/assets/54361221/9be4118b-d1c5-4b37-a136-516cbbeabed5)
