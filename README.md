@@ -9,7 +9,7 @@
 <h2>Стиль программного кода</h2>
 
 1. <b>Язык программирования</b>: Используем C# для backend и ASP.NET для frontend.
-2. <b>Стандарт кодирования</b>: Руководствуемся стандартом кодирования от Microsoft - [C# Coding Conventions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions). Для ASP.NET следуем [ASP.NET Core Coding Style](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/code-style).
+2. <b>Стандарт кодирования</b>: Руководствуемся стандартом кодирования от Microsoft - [C# Coding Conventions](<a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">*ТЫК*</a>). Для ASP.NET следуем [ASP.NET Core Coding Style](<a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/code-style">*ТЫК*</a>).
 3. <b>Комментарии и документация</b>: Каждая функция и класс должны быть документированы в соответствии с XML Documentation Comments для C#. Для ASP.NET также используем XML Documentation Comments. Используем комментарии для объяснения сложных частей кода.
 
 <h2>Как начать работу</h2>
