@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "sqlite1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": null,
+      "type": "sqlite.local",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    }
+  }
+}
