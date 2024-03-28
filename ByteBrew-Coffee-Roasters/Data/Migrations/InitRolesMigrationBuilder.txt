@@ -1,0 +1,9 @@
+migrationBuilder.InsertData(
+               table: "Roles",
+               columns: ["Id", "Name", "NormalizedName", "ConcurrencyStamp"],
+               values: new Role[,]
+               {
+                    { new Role("Клиент") },
+                    { new Role("Менеджер") },
+                    { new Role("Админ") },
+               });

@@ -10,6 +10,8 @@ namespace ByteBrew_Coffee_Roasters.Data.Models
         {
             Id = Guid.NewGuid();
             Name = name;
+            NormalizedName = name.ToUpper();
+            ConcurrencyStamp = Guid.NewGuid().ToString();
         }
     }
 }
