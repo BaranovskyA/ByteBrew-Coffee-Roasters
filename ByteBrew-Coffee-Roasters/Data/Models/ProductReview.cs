@@ -14,6 +14,7 @@ namespace ByteBrew_Coffee_Roasters.Data.Models
 
         public ProductReview(Guid productId, string text)
         {
+            Id = Guid.NewGuid();
             ProductId = productId;
             Text = text;
         }

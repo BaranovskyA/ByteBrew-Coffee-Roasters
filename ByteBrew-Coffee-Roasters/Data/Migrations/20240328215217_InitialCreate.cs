@@ -1,4 +1,5 @@
 ﻿using System;
+using ByteBrew_Coffee_Roasters.Data.Models;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -279,6 +280,20 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                 table: "Users",
                 column: "NormalizedUserName",
                 unique: true);
+
+            Role roleClient = new ("Клиент");
+            Role roleManager = new ("Менеджер");
+            Role roleAdmin = new ("Админ");
+
+            migrationBuilder.InsertData(
+               table: "Roles",
+               columns: ["Id", "Name", "NormalizedName", "ConcurrencyStamp"],
+               values: new object[,]
+               {
+                    { roleClient.Id, roleClient.Name, roleClient.NormalizedName, roleClient.ConcurrencyStamp },
+                    { roleManager.Id, roleManager.Name, roleManager.NormalizedName, roleManager.ConcurrencyStamp },
+                    { roleAdmin.Id, roleAdmin.Name, roleAdmin.NormalizedName, roleAdmin.ConcurrencyStamp }
+               });
         }
 
         /// <inheritdoc />
