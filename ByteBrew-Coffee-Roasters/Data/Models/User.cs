@@ -12,6 +12,10 @@ namespace ByteBrew_Coffee_Roasters.Data.Models
         [DeleteBehavior(DeleteBehavior.SetNull)]
         public Role? Role { get; set; }
 
+        public User()
+        {
+        }
+
         public User(Guid roleId, string email)
         {
             Id = Guid.NewGuid();
