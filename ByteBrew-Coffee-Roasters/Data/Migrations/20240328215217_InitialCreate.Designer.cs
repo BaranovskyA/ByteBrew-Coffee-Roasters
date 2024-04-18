@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ByteBrew_Coffee_Roasters.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240327193910_InitialCreate")]
+    [Migration("20240328215217_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

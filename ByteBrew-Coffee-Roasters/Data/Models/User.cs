@@ -10,18 +10,19 @@ namespace ByteBrew_Coffee_Roasters.Data.Models
         [ForeignKey(nameof(Role))]
         public Guid RoleId { get; set; }
         [DeleteBehavior(DeleteBehavior.SetNull)]
-        public Role? Role { get; set; }
+        public Role Role { get; set; }
 
         public User()
         {
+            Id = Guid.NewGuid();
         }
 
-        public User(Guid roleId, string email)
+        public User(Guid roleId, string userName)
         {
             Id = Guid.NewGuid();
             RoleId = roleId;
-            UserName = email;
-            Email = email;
+            UserName = userName;
+            NormalizedUserName = userName.ToUpper();
         }
     }
 }

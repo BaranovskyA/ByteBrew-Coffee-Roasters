@@ -1,0 +1,67 @@
+﻿@page
+@model ByteBrew_Coffee_Roasters.Pages.RegisterModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/registerAndLogin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title" style="font-family:'JetBrains Mono'">Регистрация</h2>
+                <form method="POST" class="register-form" id="register-form">
+                    <div class="form-group">
+                        <div class="icon-container">
+                            <label asp-for="ViewModel.UserName"><i class="bi bi-person-fill"></i></label>
+                        </div>
+                        <input style="font-family:'JetBrains Mono'" type="text" asp-for="ViewModel.UserName" id="name" placeholder="Логин" />
+                        <span class="text-danger" asp-validation-for="ViewModel.UserName"></span>    
+
+                    </div>
+                    <div class="form-group">
+                        <div class="icon-container">
+                            <label asp-for="ViewModel.Password"><i class="bi bi-lock-fill"></i></label>
+                        </div>
+                        <input style="font-family:'JetBrains Mono'" type="password" asp-for="ViewModel.Password" id="pass" placeholder="Пароль"/>
+                        <span class="text-danger" asp-validation-for="ViewModel.Password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="icon-container">
+                            <label asp-for="ViewModel.ConfirmPassword"><i class="bi bi-lock"></i></label>
+                        </div>
+                        <input style="font-family:'JetBrains Mono'" type="password" asp-for="ViewModel.ConfirmPassword" id="re_pass" placeholder="Повторите пароль" />
+                        <span class="text-danger" asp-validation-for="ViewModel.ConfirmPassword"></span>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-family:'JetBrains Mono'" asp-for="ViewModel.RoleId" class="control-label"></i></label>
+                        <select style="font-family:'JetBrains Mono'" asp-for="ViewModel.RoleId" class="form-control" asp-items="ViewBag.Roles"></select>
+                    </div>
+                    <span class="text-danger">@Model.Error</span>
+                    <div class="form-group form-button">
+                        <input style="font-family:'JetBrains Mono'; font-size: 15px" type="submit" name="signup" id="signup" class="form-submit" value="Зарегистрироваться" />
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="images/signup-image.png" alt="sing up image"></figure>
+                <a style="font-family:'JetBrains Mono'" href="/Login" class="signup-image-link">Уже есть аккаунт</a>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
