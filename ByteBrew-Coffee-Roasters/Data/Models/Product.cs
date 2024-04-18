@@ -10,6 +10,10 @@
 
         public IList<Order>? Orders { get; set; }
 
+        public Product()
+        {
+        }
+
         public Product(string name, string? description, decimal price, string? image)
         {
             Id = Guid.NewGuid();
