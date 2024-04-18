@@ -9,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using ByteBrew_Coffee_Roasters.Data;
 using ByteBrew_Coffee_Roasters.Data.Models;
 
-namespace ByteBrew_Coffee_Roasters.Pages
+namespace ByteBrew_Coffee_Roasters.Pages.Account
 {
     public class AccountModel : PageModel
     {
-        private readonly ByteBrew_Coffee_Roasters.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public AccountModel(ByteBrew_Coffee_Roasters.Data.ApplicationDbContext context)
+        public AccountModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public User User { get; set; } = default!;
+        public ByteBrew_Coffee_Roasters.Data.Models.User User { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -30,13 +30,13 @@ namespace ByteBrew_Coffee_Roasters.Pages
                 return NotFound();
             }
 
-            var user =  await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
             User = user;
-           ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id");
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Id");
             return Page();
         }
 

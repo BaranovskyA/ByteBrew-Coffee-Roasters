@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ByteBrew_Coffee_Roasters.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using ByteBrew_Coffee_Roasters.ViewModels;
+using ByteBrew_Coffee_Roasters.Data.Models;
 
-namespace ByteBrew_Coffee_Roasters.Pages
+namespace ByteBrew_Coffee_Roasters.Pages.Account
 {
     public class LoginModel(UserManager<User> userManager, SignInManager<User> signInManager) : PageModel
     {
@@ -27,12 +27,15 @@ namespace ByteBrew_Coffee_Roasters.Pages
             {
                 var user = await _userManager.FindByNameAsync(ViewModel.UserName);
 
-                if (user != null && !string.IsNullOrEmpty(ViewModel.Password)) 
+                if (user != null && !string.IsNullOrEmpty(ViewModel.Password))
                 {
-                    await _signInManager.PasswordSignInAsync(user, ViewModel.Password, 
+                    var result = await _signInManager.PasswordSignInAsync(user, ViewModel.Password,
                         isPersistent: true, lockoutOnFailure: false);
 
-                    return RedirectToPage("./Index");
+                    if (result.Succeeded)
+                    {
+                        return RedirectToPage("/Index");
+                    }
                 }
             }
 

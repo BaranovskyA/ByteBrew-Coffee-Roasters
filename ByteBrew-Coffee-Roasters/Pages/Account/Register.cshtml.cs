@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ByteBrew_Coffee_Roasters.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using ByteBrew_Coffee_Roasters.Data;
 using ByteBrew_Coffee_Roasters.ViewModels;
+using ByteBrew_Coffee_Roasters.Data;
 
-namespace ByteBrew_Coffee_Roasters.Pages
+namespace ByteBrew_Coffee_Roasters.Pages.Account
 {
     public class RegisterModel(ApplicationDbContext context, UserManager<User> userManager, SignInManager<User> signInManager) : PageModel
     {
@@ -17,9 +17,9 @@ namespace ByteBrew_Coffee_Roasters.Pages
         public IActionResult OnGet(string? Error, string? UserName)
         {
             ViewData["Roles"] = new SelectList(Roles, "Id", "Name");
-            this.Error = Error; 
+            this.Error = Error;
             if (UserName != null)
-                this.ViewModel.UserName = UserName;
+                ViewModel.UserName = UserName;
             return Page();
         }
 
