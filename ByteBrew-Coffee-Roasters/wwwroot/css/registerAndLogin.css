@@ -10,6 +10,14 @@ list-type-ulli, .socials {
   margin: 0;
   padding: 0; }
 
+body {
+    font-family:'JetBrains Mono' !important;
+}
+
+btn {
+    font-family: 'JetBrains Mono';
+    font-size: 15px;
+}
 
 a:focus, a:active {
   text-decoration: none;
@@ -76,7 +84,6 @@ h2 {
   padding: 0;
   font-weight: bold;
   color: #222;
-  font-family: Poppins;
   font-size: 36px; }
 
 .main {
@@ -222,7 +229,6 @@ input {
   border: none;
   border-bottom: 1px solid #999;
   padding: 6px 30px;
-  font-family: Poppins;
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
     color: #999; }

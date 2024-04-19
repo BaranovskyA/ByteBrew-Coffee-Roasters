@@ -41,10 +41,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            <td style="white-space: nowrap; overflow:hidden;text-overflow: ellipsis; max-width: 250px;">
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
-            <td>
+            <td style="white-space:nowrap">
                 <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Подробнее</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
