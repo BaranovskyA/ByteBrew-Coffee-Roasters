@@ -18,7 +18,18 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 })
+    .AddRoles<Role>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+
+    options.LoginPath = "/Account/Login";
+    options.SlidingExpiration = true;
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

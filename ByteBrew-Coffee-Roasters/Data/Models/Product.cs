@@ -5,7 +5,7 @@
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public decimal Price { get; set; }
+        public float Price { get; set; }
         public string? Image { get; set; }
 
         public IList<Order>? Orders { get; set; }
@@ -14,7 +14,7 @@
         {
         }
 
-        public Product(string name, string? description, decimal price, string? image)
+        public Product(string name, string? description, float price, string? image)
         {
             Id = Guid.NewGuid();
             Name = name;
