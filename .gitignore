@@ -397,3 +397,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db
+/ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db-shm
+/ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db-wal
+ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db
+ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db-shm
+ByteBrew-Coffee-Roasters/Data/ByteBrewDatabase.db-wal
