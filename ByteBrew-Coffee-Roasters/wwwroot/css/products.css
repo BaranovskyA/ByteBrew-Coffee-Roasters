@@ -1,0 +1,32 @@
+﻿a {
+    color: black;
+    text-decoration: underline;
+}
+
+    a:hover {
+        color: #838383;
+    }
+
+.btn-primary {
+    display: inline-block;
+    background: #000000;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border: none;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+    .btn-primary:hover {
+        background: #838383;
+    }
+
+dt.product-label {
+    font-size: 15px;
+}
+
+.product-details {
+    font-size: 15px;
+}

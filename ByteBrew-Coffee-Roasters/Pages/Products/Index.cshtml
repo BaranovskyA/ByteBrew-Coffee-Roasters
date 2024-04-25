@@ -6,50 +6,53 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
 <h1>Продукты</h1>
 
-<p>
-    <a asp-page="Create">Создать новый</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
+                Название @* @Html.DisplayNameFor(model => model.Product[0].Name) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
+                Описание @* @Html.DisplayNameFor(model => model.Product[0].Description) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
+                Цена @* @Html.DisplayNameFor(model => model.Product[0].Price) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product[0].Image)
+                Изображение @* @Html.DisplayNameFor(model => model.Product[0].Image) *@
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td style="white-space: nowrap; overflow:hidden;text-overflow: ellipsis; max-width: 250px;">
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td style="white-space:nowrap">
-                <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Подробнее</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Product)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="white-space: nowrap; overflow:hidden;text-overflow: ellipsis; max-width: 250px;">
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td style="white-space:nowrap">
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Изменить</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<p>
+    <a asp-page="Create">Добавить продукт</a>
+</p>

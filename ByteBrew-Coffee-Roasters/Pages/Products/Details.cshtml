@@ -5,40 +5,29 @@
     ViewData["Title"] = "Details";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
 
 <h1>Детали</h1>
 
 <div>
     <h4>Продукт</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Product.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Product.Image)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@Model.Product.Image" style="max-width: 50%; max-height: auto;"/>
-        </dd>
-    </dl>
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt class="product-label">Название</dt>
+                <dd class="product-details">@Html.DisplayFor(model => model.Product.Name)</dd>
+                <dt class="product-label">Описание</dt>
+                <dd class="product-details">@Html.DisplayFor(model => model.Product.Description)</dd>
+                <dt class="product-label">Цена</dt>
+                <dd class="product-details">@Html.DisplayFor(model => model.Product.Price)</dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <img src="@Model.Product.Image" style="max-width: 100%; max-height: auto;" />
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Product.Id">Изменить</a> |
-    <a asp-page="./Index">Вернуться к списку</a>
+<a asp-page="./Edit" asp-route-id="@Model.Product.Id">Изменить</a> |
+<a asp-page="./Index">Вернуться к списку</a>
 </div>
