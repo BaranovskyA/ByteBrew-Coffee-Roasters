@@ -44,7 +44,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: true);
-                return RedirectToPage("./Index");
+                return RedirectToPage("/Index");
             }
 
             Error = "Ошибка: Попробуйте позже";

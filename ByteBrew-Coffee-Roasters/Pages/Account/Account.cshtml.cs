@@ -44,12 +44,14 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            var user = await _context.Users.FindAsync(User.Id);
 
-            _context.Attach(User).State = EntityState.Modified;
+            if (user == null) return NotFound();
+
+            user.Email = User.Email;
+            user.NormalizedEmail = User.Email?.ToUpper();
+            user.PhoneNumber = User.PhoneNumber;
+            user.PhoneNumberConfirmed = false;
 
             try
             {
@@ -67,7 +69,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
                 }
             }
 
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool UserExists(Guid id)

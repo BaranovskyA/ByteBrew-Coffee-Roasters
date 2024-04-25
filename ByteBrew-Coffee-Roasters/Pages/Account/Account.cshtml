@@ -6,9 +6,9 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Account</h1>
+<h1>    </h1>
 
-<h4>User</h4>
+<h4>Пользователь</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,91 +16,57 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="User.Id" />
             <div class="form-group">
-                <label asp-for="User.RoleId" class="control-label"></label>
-                <select asp-for="User.RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
-                <span asp-validation-for="User.RoleId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.UserName" class="control-label"></label>
-                <input asp-for="User.UserName" class="form-control" />
-                <span asp-validation-for="User.UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.NormalizedUserName" class="control-label"></label>
-                <input asp-for="User.NormalizedUserName" class="form-control" />
-                <span asp-validation-for="User.NormalizedUserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.Email" class="control-label"></label>
+                <label asp-for="User.Email" style="font-family:'JetBrains Mono'; class="control-label">Электронная почта</label>
                 <input asp-for="User.Email" class="form-control" />
                 <span asp-validation-for="User.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="User.NormalizedEmail" class="control-label"></label>
-                <input asp-for="User.NormalizedEmail" class="form-control" />
-                <span asp-validation-for="User.NormalizedEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="User.EmailConfirmed" /> @Html.DisplayNameFor(model => model.User.EmailConfirmed)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.PasswordHash" class="control-label"></label>
-                <input asp-for="User.PasswordHash" class="form-control" />
-                <span asp-validation-for="User.PasswordHash" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.SecurityStamp" class="control-label"></label>
-                <input asp-for="User.SecurityStamp" class="form-control" />
-                <span asp-validation-for="User.SecurityStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.ConcurrencyStamp" class="control-label"></label>
-                <input asp-for="User.ConcurrencyStamp" class="form-control" />
-                <span asp-validation-for="User.ConcurrencyStamp" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.PhoneNumber" class="control-label"></label>
+                <label asp-for="User.PhoneNumber" style="font-family:'JetBrains Mono'; class="control-label">Номер телефона</label>
                 <input asp-for="User.PhoneNumber" class="form-control" />
                 <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="User.PhoneNumberConfirmed" /> @Html.DisplayNameFor(model => model.User.PhoneNumberConfirmed)
-                </label>
+            <div class="form-group form-button">
+                <button style="font-family:'JetBrains Mono'; font-size: 15px" type="button" class="form-submit" onclick="$('#changePasswordModal').modal('show')">Сменить пароль</button>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="User.TwoFactorEnabled" /> @Html.DisplayNameFor(model => model.User.TwoFactorEnabled)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.LockoutEnd" class="control-label"></label>
-                <input asp-for="User.LockoutEnd" class="form-control" />
-                <span asp-validation-for="User.LockoutEnd" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="User.LockoutEnabled" /> @Html.DisplayNameFor(model => model.User.LockoutEnabled)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="User.AccessFailedCount" class="control-label"></label>
-                <input asp-for="User.AccessFailedCount" class="form-control" />
-                <span asp-validation-for="User.AccessFailedCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group form-button">
+                <input style="font-family:'JetBrains Mono'; font-size: 15px" type="submit" name="signup" id="signup" class="form-submit" value="Сохранить" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Сменить пароль</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="currentPassword">Текущий пароль</label>
+                        <input type="password" id="currentPassword" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Новый пароль</label>
+                        <input type="password" id="newPassword" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Подтвердите новый пароль</label>
+                        <input type="password" id="confirmPassword" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сменить пароль</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
