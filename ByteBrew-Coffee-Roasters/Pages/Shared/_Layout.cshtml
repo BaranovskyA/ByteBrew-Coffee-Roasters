@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - ByteBrew Coffee Roasters</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/registerAndLogin.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
@@ -28,13 +29,16 @@
                         <li class="nav-item">
                             <a style="font-family:'JetBrains Mono'" class="nav-link text-dark" asp-area="" asp-page="/Privacy">Контакты</a>
                         </li>
+                        <li class="nav-item">
+                            <a style="font-family:'JetBrains Mono'" class="nav-link text-dark" asp-area="" asp-page="/Products/Index">Продукты</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container main-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
