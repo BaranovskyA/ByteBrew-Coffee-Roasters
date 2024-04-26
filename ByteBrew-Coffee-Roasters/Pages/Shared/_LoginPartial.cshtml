@@ -6,9 +6,13 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-page="/Products/Index" asp-route-id="" title="Продукты">Продукты</a>
-    </li>
+    @if (User.Claims.Any(x=>x.Value == "Менеджер"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-page="/Products/Index" asp-route-id="" title="Продукты">Продукты</a>
+        </li>
+    }
+        
     <li class="nav-item">
          <a class="nav-link text-dark text-decoration-underline" asp-page="/Account/Account" asp-route-id="@UserManager.FindByNameAsync(User.Identity?.Name!).Result!.Id" title="Профиль">Профиль @User.Identity?.Name</a>
     </li>

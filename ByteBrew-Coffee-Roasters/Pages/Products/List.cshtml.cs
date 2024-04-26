@@ -24,6 +24,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Products
         public async Task OnGetAsync()
         {
             Product = await _context.Products.ToListAsync();
+
         }
     }
 }

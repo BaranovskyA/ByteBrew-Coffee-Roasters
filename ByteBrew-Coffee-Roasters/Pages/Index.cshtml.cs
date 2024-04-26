@@ -14,6 +14,7 @@ namespace ByteBrew_Coffee_Roasters.Pages
 
         public void OnGet()
         {
+
         }
     }
 
