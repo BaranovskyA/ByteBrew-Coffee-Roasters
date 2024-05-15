@@ -32,6 +32,15 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddDistributedMemoryCache();// добавляем IDistributedMemoryCache
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".CartSession";
+    options.IdleTimeout = TimeSpan.FromDays(14);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,6 +62,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();   // добавляем middleware для работы с сессиями
 
 app.MapRazorPages();
 

@@ -10,6 +10,7 @@ namespace ByteBrew_Coffee_Roasters.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductReview> ProductReviews { get; set; }
+        public DbSet<CartItem> ShoppingCartItems { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

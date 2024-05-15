@@ -8,15 +8,95 @@
 
 <h1>Меню</h1>
 
-<div class="d-flex flex-row flex-wrap justify-content-center">
-    @foreach (var item in Model.Product)
+<div id="menu" class="d-flex flex-row flex-wrap justify-content-center">
+    @if (Model.Products.Count > 0)
     {
-        <div class="card flex-column text-center p-3 m-2" style="max-width: 48%">
-            <span class="card-title fw-bolder fs-4">@item.Name</span>
-            <span class="card-subtitle text-secondary fs-6">@item.Description</span>
-            <img src="@item.Image" />
-            <span class="fw-bold fs-4">@item.Price ₽</span>
-            <button class="btn btn-primary">В корзину</button>
-        </div>
+        @foreach (var item in Model.Products)
+        {
+            <div class="card flex-column text-center p-3 m-2" style="max-width: 48%">
+                <span class="card-title fw-bolder fs-4">@item.Name</span>
+                <span class="card-subtitle text-secondary fs-6">@item.Description</span>
+                <img src="@item.Image" />
+                <span class="fw-bold fs-4">@item.Price ₽</span>
+
+                <div class="card p-3 display-flex flex-row justify-content-around">
+
+                    <form class="cardActions" data-action="DecreaseFromCart" method="post">
+                        @Html.Hidden("productId", item.Id)
+                        @Html.Hidden("returnUrl", string.Concat(HttpContext.Request.Path, HttpContext.Request.QueryString.Value))
+                        <span class="card-text p-1">
+                            <button type="submit" class="btn btn-secondary">
+                                -
+                            </button>
+                        </span>
+                    </form>
+
+                    <h3>@item.QuantityInCart шт</h3>
+
+                    <form class="cardActions" data-action="AddToCart" method="post">
+                        @Html.Hidden("productId", item.Id)
+                        @Html.Hidden("returnUrl", string.Concat(HttpContext.Request.Path, HttpContext.Request.QueryString.Value))
+                        <span class="card-text p-1">
+                            <button type="submit" class="btn btn-secondary">
+                                +
+                            </button>
+                        </span>
+                    </form>
+
+                    <form class="cardActions" data-action="RemoveFromCart" method="post">
+                        @Html.Hidden("productId", item.Id)
+                        @Html.Hidden("returnUrl", string.Concat(HttpContext.Request.Path, HttpContext.Request.QueryString.Value))
+                        <span class="card-text p-1">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt">Мусорка</i>
+                            </button>
+                        </span>
+                    </form>
+
+                </div>
+
+            </div>
+        }
+    }
+    else
+    {
+        <h1>В меню пока нет товаров</h1>
     }
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        function updateMenu() {
+            $.ajax({
+                url: window.location.href, // Запрос на текущий URL для получения обновленного меню
+                method: 'GET',
+                success: function (response) {
+                    var parsedHTML = $(response);
+                    var newMenuContent = parsedHTML.find('#menu').html();
+                    $('#menu').html(newMenuContent);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        $(document).on('submit', '.cardActions', function (event) {
+            event.preventDefault(); // Предотвращение стандартного поведения формы
+            var $form = $(this);
+            $.ajax({
+                url: '/Products/List?handler=' + $form.data('action'),
+                method: 'POST',
+                data: $form.serialize(),
+                success: function (response) {
+                    updateMenu(); // Обновление меню после успешного запроса
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    });
+
+</script>

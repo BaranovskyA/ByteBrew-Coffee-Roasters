@@ -14,6 +14,7 @@
         {
             Id = Guid.NewGuid();
             Status = status;
+            Products = new List<Product>();
         }
     }
 }
