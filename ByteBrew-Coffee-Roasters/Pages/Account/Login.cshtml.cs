@@ -27,13 +27,6 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
             {
                 var user = await _userManager.FindByNameAsync(ViewModel.UserName);
 
-                var asd = await _userManager.GetRolesAsync(user);
-
-                foreach (var item in asd)
-                {
-
-                }
-
                 if (user != null && !string.IsNullOrEmpty(ViewModel.Password))
                 {
                     var result = await _signInManager.PasswordSignInAsync(user, ViewModel.Password,
@@ -41,6 +34,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
 
                     if (result.Succeeded)
                     {
+                        HttpContext.Session.Set("CartId", user.Id.ToByteArray());
                         return RedirectToPage("/Index");
                     }
                 }

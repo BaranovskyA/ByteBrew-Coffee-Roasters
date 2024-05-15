@@ -21,7 +21,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
         }
 
         [BindProperty]
-        public ByteBrew_Coffee_Roasters.Data.Models.User User { get; set; } = default!;
+        public new ByteBrew_Coffee_Roasters.Data.Models.User User { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
