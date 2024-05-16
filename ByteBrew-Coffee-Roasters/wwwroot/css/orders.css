@@ -1,0 +1,23 @@
+﻿.btn-primary {
+    display: inline-block;
+    background-color: #000000;
+    color: #fff;
+    border-bottom: none;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    vertical-align: middle;
+}
+
+.btn-primary:hover {
+    background: #838383;
+}
+
+td {
+    vertical-align: middle;
+}
+
+i.fas.fa-trash-alt {
+    font-style: normal;
+    font-size: 0.8rem;
+}

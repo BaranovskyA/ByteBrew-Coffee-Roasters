@@ -3,6 +3,7 @@ using System;
 using ByteBrew_Coffee_Roasters.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ByteBrew_Coffee_Roasters.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240516093851_AddOrder")]
+    partial class AddOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -29,6 +32,9 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("OrderId")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("TEXT");
 
@@ -36,6 +42,8 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ItemId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
@@ -48,46 +56,18 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CustomerType")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateTime")
+                    b.Property<Guid?>("ProductId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.OrderItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Product", b =>
@@ -334,17 +314,6 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.CartItem", b =>
                 {
-                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.OrderItem", b =>
-                {
                     b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Order", null)
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
@@ -356,6 +325,13 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Order", b =>
+                {
+                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Product", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.ProductReview", b =>
@@ -434,6 +410,11 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Order", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Product", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

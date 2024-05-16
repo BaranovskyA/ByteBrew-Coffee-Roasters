@@ -43,6 +43,15 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
             var result = await _userManager.CreateAsync(user, ViewModel.Password);
             if (result.Succeeded)
             {
+                var currentUser = await _userManager.FindByNameAsync(user.UserName!);
+
+                IdentityUserRole<Guid> userRole = new IdentityUserRole<Guid>();
+                userRole.UserId = currentUser!.Id;
+                userRole.RoleId = currentUser.RoleId;
+
+                context.UserRoles.Add(userRole);
+                await context.SaveChangesAsync();
+
                 await _signInManager.SignInAsync(user, isPersistent: true);
                 return RedirectToPage("/Index");
             }

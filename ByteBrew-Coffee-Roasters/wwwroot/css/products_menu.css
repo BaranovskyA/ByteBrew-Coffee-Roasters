@@ -1,0 +1,87 @@
+.btn-primary {
+    display: inline-block;
+    background: #000000;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border: none;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #838383;
+}
+
+.card.flex-column.text-center.p-3.m-2 {
+    width: 50rem;
+    height: auto;
+}
+
+#product-image {
+    width: auto;
+    height: 10rem;
+    align-self: center;
+}
+
+
+form#remove-all-products {
+    display: block !important;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.card.p-2.display-flex.flex-row.justify-content-around {
+    width: 12rem;
+    border: none;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #000000 !important;
+    border-color: #000000;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border: none;
+}
+
+button.btn.btn-secondary:hover {
+    background-color: #838383 !important;
+    border: none;
+}
+
+button.btn.btn-danger {
+    margin-bottom: 0.2rem;
+    margin-top: -0.2rem;
+}
+
+button.btn.btn-danger:hover {
+    background-color: crimson !important;
+    border: none;
+}
+
+i.fas.fa-trash-alt {
+    font-style: normal;
+    font-size: 0.8rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+
+
+.card.p-2.display-flex.justify-content-around {
+    border: none !important;
+}

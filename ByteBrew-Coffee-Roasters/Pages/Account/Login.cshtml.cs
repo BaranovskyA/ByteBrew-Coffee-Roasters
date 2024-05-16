@@ -34,6 +34,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Account
 
                     if (result.Succeeded)
                     {
+                        HttpContext.Session.Set("CartId", user.Id.ToByteArray());
                         return RedirectToPage("/Index");
                     }
                 }

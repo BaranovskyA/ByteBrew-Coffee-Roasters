@@ -3,6 +3,7 @@ using System;
 using ByteBrew_Coffee_Roasters.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,37 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ByteBrew_Coffee_Roasters.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240425210104_ProductPriceFloat")]
+    partial class ProductPriceFloat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
-
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.CartItem", b =>
-                {
-                    b.Property<Guid>("ItemId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CartId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ItemId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Order", b =>
                 {
@@ -48,46 +26,12 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CustomerType")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("UserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.OrderItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Product", b =>
@@ -332,30 +276,19 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.CartItem", b =>
+            modelBuilder.Entity("OrderProduct", b =>
                 {
-                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("OrdersId")
+                        .HasColumnType("TEXT");
 
-                    b.Navigation("Product");
-                });
+                    b.Property<Guid>("ProductsId")
+                        .HasColumnType("TEXT");
 
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.OrderItem", b =>
-                {
-                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Order", null)
-                        .WithMany("Products")
-                        .HasForeignKey("OrderId");
+                    b.HasKey("OrdersId", "ProductsId");
 
-                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasIndex("ProductsId");
 
-                    b.Navigation("Product");
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.ProductReview", b =>
@@ -431,9 +364,19 @@ namespace ByteBrew_Coffee_Roasters.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ByteBrew_Coffee_Roasters.Data.Models.Order", b =>
+            modelBuilder.Entity("OrderProduct", b =>
                 {
-                    b.Navigation("Products");
+                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrdersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ByteBrew_Coffee_Roasters.Data.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

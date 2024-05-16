@@ -18,8 +18,28 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 })
+    .AddRoles<Role>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+
+    options.LoginPath = "/Account/Login";
+    options.SlidingExpiration = true;
+});
+
 builder.Services.AddRazorPages();
+
+builder.Services.AddDistributedMemoryCache();// добавляем IDistributedMemoryCache
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".CartSession";
+    options.IdleTimeout = TimeSpan.FromDays(14);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -42,6 +62,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();   // добавляем middleware для работы с сессиями
 
 app.MapRazorPages();
 

@@ -1,0 +1,17 @@
+﻿label.control-label {
+    bottom: 1rem;
+}
+
+textarea#ProductReview_Text {
+    resize: none;
+    margin-bottom: 1rem;
+}
+
+input.btn.btn-primary:hover {
+    background: #838383 !important;
+}
+
+input.btn.btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+}

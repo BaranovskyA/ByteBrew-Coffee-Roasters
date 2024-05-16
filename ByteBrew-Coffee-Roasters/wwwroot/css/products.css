@@ -3,9 +3,9 @@
     text-decoration: underline;
 }
 
-    a:hover {
-        color: #838383;
-    }
+a:hover {
+    color: #838383;
+}
 
 .btn-primary {
     display: inline-block;
@@ -19,9 +19,9 @@
     cursor: pointer;
 }
 
-    .btn-primary:hover {
-        background: #838383;
-    }
+.btn-primary:hover {
+    background: #838383;
+}
 
 dt.product-label {
     font-size: 15px;

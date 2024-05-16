@@ -1,0 +1,65 @@
+﻿
+
+.btn {
+    display: inline-block;
+    background-color: #000000 !important;
+    border-color: #000000;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    border: none;
+}
+
+button.btn.btn-secondary:hover {
+    background-color: #838383 !important;
+    border: none;
+}
+
+button.btn.btn-danger {
+    margin-bottom: 0.2rem;
+    margin-top: -0.2rem;
+}
+
+button.btn.btn-danger:hover {
+    background-color: crimson !important;
+    border: none;
+}
+
+button.btn.btn-primary:hover {
+    background: #838383 !important  ;
+}
+
+i.fas.fa-trash-alt {
+    font-style: normal;
+    font-size: 0.8rem;
+}
+
+h3 {
+    font-size: 1rem;
+    margin: 0 0.3rem 0 0.3rem;
+}
+
+.card-title.fw-bolder.fs-4 {
+    margin-bottom: -0.7rem !important;
+}
+
+.d-flex.flex-row.justify-content-around {
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.card.flex-row.align-items-center.p-3.m-2 {
+    /* border: none; */
+    /* border-bottom: none; */
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}

@@ -6,15 +6,15 @@ namespace ByteBrew_Coffee_Roasters.ViewModels
     {
         [Required]
         [StringLength(32, MinimumLength = 6, ErrorMessage = "Логин должен содержать от 6 до 32 символов")]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
         [Required]
         [StringLength(32, MinimumLength = 6, ErrorMessage = "Пароль должен содержать от 6 до 32 символов")]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
         [Required]
         [StringLength(32, MinimumLength = 6, ErrorMessage = "Пароль должен содержать от 6 до 32 символов")]
         [DataType(DataType.Password)]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; } = string.Empty;
         [Required]
         public Guid RoleId { get; set; }
 
