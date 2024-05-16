@@ -19,9 +19,9 @@
     cursor: pointer;
 }
 
-    .btn-primary:hover {
-        background: #838383;
-    }
+.btn-primary:hover {
+    background: #838383;
+}
 
 dt.product-label {
     font-size: 15px;

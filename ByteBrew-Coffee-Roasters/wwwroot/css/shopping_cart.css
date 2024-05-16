@@ -1,42 +1,4 @@
-.btn-primary {
-    display: inline-block;
-    background: #000000;
-    color: #fff;
-    border-bottom: none;
-    width: auto;
-    padding: 15px 39px;
-    border: none;
-    margin-top: 25px;
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background: #838383;
-}
-
-.card.flex-column.text-center.p-3.m-2 {
-    width: 50rem;
-    height: auto;
-}
-
-#product-image {
-    width: auto;
-    height: 10rem;
-    align-self: center;
-}
-
-
-form#remove-all-products {
-    display: block !important;
-    width: 100%;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.card.p-2.display-flex.flex-row.justify-content-around {
-    width: 12rem;
-    border: none;
-}
+﻿
 
 .btn {
     display: inline-block;
@@ -71,6 +33,10 @@ button.btn.btn-danger:hover {
     border: none;
 }
 
+button.btn.btn-primary:hover {
+    background: #838383 !important  ;
+}
+
 i.fas.fa-trash-alt {
     font-style: normal;
     font-size: 0.8rem;
@@ -78,10 +44,22 @@ i.fas.fa-trash-alt {
 
 h3 {
     font-size: 1rem;
+    margin: 0 0.3rem 0 0.3rem;
 }
 
+.card-title.fw-bolder.fs-4 {
+    margin-bottom: -0.7rem !important;
+}
 
+.d-flex.flex-row.justify-content-around {
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
 
-.card.p-2.display-flex.justify-content-around {
-    border: none !important;
+.card.flex-row.align-items-center.p-3.m-2 {
+    /* border: none; */
+    /* border-bottom: none; */
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }

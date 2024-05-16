@@ -17,11 +17,13 @@
             <div class="card flex-column text-center p-3 m-2" style="max-width: 48%">
                 <span class="card-title fw-bolder fs-4">@item.Name</span>
                 <span class="card-subtitle text-secondary fs-6">@item.Description</span>
-                <img src="@item.Image" />
+                <img src="@item.Image" id="product-image" />
                 <span class="fw-bold fs-4">@item.Price ₽</span>
 
-                <div class="card p-3 display-flex flex-row justify-content-around">
+                <div class="card p-2 display-flex justify-content-around">
 
+                    <div class="card p-2 display-flex flex-row justify-content-around">
+                    
                     <form class="cardActions" data-action="DecreaseFromCart" method="post">
                         @Html.Hidden("productId", item.Id)
                         @Html.Hidden("returnUrl", string.Concat(HttpContext.Request.Path, HttpContext.Request.QueryString.Value))
@@ -43,13 +45,14 @@
                             </button>
                         </span>
                     </form>
+                    </div>
 
-                    <form class="cardActions" data-action="RemoveFromCart" method="post">
+                    <form class="cardActions" data-action="RemoveFromCart" method="post" id="remove-all-products">
                         @Html.Hidden("productId", item.Id)
                         @Html.Hidden("returnUrl", string.Concat(HttpContext.Request.Path, HttpContext.Request.QueryString.Value))
                         <span class="card-text p-1">
                             <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash-alt">Мусорка</i>
+                                <i class="fas fa-trash-alt">Удалить все</i>
                             </button>
                         </span>
                     </form>
@@ -63,13 +66,13 @@
     {
         <h1>В меню пока нет товаров</h1>
     }
-
-    <a asp-page="/Products/ShoppingCart">
-        <h3>
-            Корзина
-        </h3>
-    </a>
 </div>
+
+@* <a asp-page="/Products/ShoppingCart">
+    <h3>
+        Корзина
+    </h3>
+</a> *@
 
 
 <script>

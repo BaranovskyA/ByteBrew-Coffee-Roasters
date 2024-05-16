@@ -5,6 +5,7 @@
     ViewData["Title"] = "Shopping Cart";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/shopping_cart.css" asp-append-version="true" />
 
 <h1>Корзина покупок</h1>
 
@@ -14,12 +15,16 @@
         foreach (var item in Model.CartItems)
         {
             <div class="card flex-row align-items-center p-3 m-2" style="max-width: 600px; width: 100%;">
-                <img src="@item.Product!.Image" class="card-img-left" style="width: 100px; height: auto; margin-right: 20px;" />
-                <div class="flex-grow-1">
-                    <span class="card-title fw-bolder fs-4">@item.Product.Name</span>
-                    <span class="card-subtitle text-secondary fs-6">@item.Product.Description</span>
-                    <span class="fw-bold fs-4">@item.Product.Price ₽</span>
-                    <div class="d-flex flex-row justify-content-around mt-2">
+                <div class="flex-grow-1 d-flex align-items-center">
+                    <img src="@item.Product!.Image" class="card-img-left" style="width: 100px; height: auto; margin-right: 20px;" />
+                    <div>
+                        <div class="card-title fw-bolder fs-4">@item.Product.Name</div>
+                        <div class="card-subtitle text-secondary fs-6">@item.Product.Description</div>
+                        <div class="fw-bold fs-4">@item.Product.Price ₽</div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column mt-2">
+                    <div class="d-flex flex-row justify-content-around">
                         <form method="post" data-ajax="true" asp-page-handler="DecreaseFromCart">
                             @Html.Hidden("productId", item.ProductId)
                             <button type="submit" class="btn btn-secondary">-</button>
@@ -29,15 +34,19 @@
                             @Html.Hidden("productId", item.ProductId)
                             <button type="submit" class="btn btn-secondary">+</button>
                         </form>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
                         <form method="post" data-ajax="true" asp-page-handler="RemoveFromCart">
                             @Html.Hidden("productId", item.ProductId)
                             <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-trash-alt">Мусорка</i>
+                                <i class="fas fa-trash-alt">Удалить все</i>
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
+
+
         }
         <h4>Итого к оплате: @Model.CartItems.Sum(x => x.Quantity * x.Product!.Price) руб</h4>
 
