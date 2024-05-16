@@ -16,8 +16,6 @@ namespace ByteBrew_Coffee_Roasters.Pages.Products
 
         public IList<CartItem> CartItems { get; set; } = new List<CartItem>();
         public const string CartSessionKey = "CartId";
-        [BindProperty]
-        public string StatusMessage { get; private set; }
 
         public async Task OnGetAsync()
         {
@@ -123,11 +121,23 @@ namespace ByteBrew_Coffee_Roasters.Pages.Products
 
             if (cartItems != null)
             {
+                bool isUserAuthorizated = await _context.Users.AnyAsync(x => x.Id == ShoppingCartId);
+
+                Order newOrder = new("Создан");
+                if (isUserAuthorizated)
+                    newOrder = new("Создан", ShoppingCartId);
+
+                foreach (var item in cartItems)
+                {
+                    newOrder.Products.Add(new OrderItem(item.ProductId, item.Quantity));
+                }
+                await _context.Orders.AddAsync(newOrder);
+
                 _context.ShoppingCartItems.RemoveRange(cartItems);
+
                 await _context.SaveChangesAsync();
             }
 
-            StatusMessage = "Успешно";
             return RedirectToPage();
         }
     }
