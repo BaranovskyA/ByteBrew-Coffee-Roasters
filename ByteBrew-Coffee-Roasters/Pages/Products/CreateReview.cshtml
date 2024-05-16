@@ -1,0 +1,38 @@
+﻿@page
+@model ByteBrew_Coffee_Roasters.Pages.Products.CreateReviewModel
+
+@{
+    ViewData["Title"] = "CreateReview";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/create_review.css" asp-append-version="true" />
+
+<h1>Отзыв о продукте</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductReview.ProductId" class="control-label">Продукт</label>
+                <select asp-for="ProductReview.ProductId" class ="form-control" asp-items="ViewBag.ProductId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductReview.Text" class="control-label">Отзыв</label>
+                <textarea asp-for="ProductReview.Text" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="ProductReview.Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отправить отзыв" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <img src="@Model.ProductReview.Product.Image" alt="Изображение продукта" class="img-fluid">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,22 +1,32 @@
 ﻿@page
 @model ByteBrew_Coffee_Roasters.Pages.Orders.ListModel
+@{
+    ViewData["Title"] = "Заказы";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
 
+
+<link rel="stylesheet" href="~/css/orders.css" asp-append-version="true" />
 <h3>Заказы</h3>
 
 <table class="table" id="orders">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Orders[0].CustomerType)
+                Тип заказчика
+                @* @Html.DisplayNameFor(model => model.Orders[0].CustomerType) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Orders[0].DateTime)
+                Дата и время заказа
+                @* @Html.DisplayNameFor(model => model.Orders[0].DateTime) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Orders[0].Status)
+                Статус
+                @* @Html.DisplayNameFor(model => model.Orders[0].Status) *@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Orders[0].Products)
+                Продукты
+                @* @Html.DisplayNameFor(model => model.Orders[0].Products) *@
             </th>
             <th></th>
         </tr>
@@ -25,7 +35,7 @@
 @foreach (var item in Model.Orders) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerType)
+                @(item.CustomerType.ToString() == "Anonymous" ? "Анонимный" : "Авторизованный")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
