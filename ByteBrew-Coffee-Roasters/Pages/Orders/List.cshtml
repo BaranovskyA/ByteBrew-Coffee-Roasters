@@ -1,0 +1,90 @@
+﻿@page
+@model ByteBrew_Coffee_Roasters.Pages.Orders.ListModel
+
+<h3>Заказы</h3>
+
+<table class="table" id="orders">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders[0].CustomerType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders[0].DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orders[0].Products)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Orders) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var product in item.Products)
+                    {
+                        <li>@product.Product!.Name - @product.Quantity шт</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <form method="post" data-ajax="true" asp-page-handler="OrderComplete">
+                    @Html.Hidden("orderId", item.Id)
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-trash-alt">Выполнен</i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        function updateOrders() {
+            $.ajax({
+                url: window.location.href,
+                method: 'GET',
+                success: function (response) {
+                    var parsedHTML = $(response);
+                    var newCartContent = parsedHTML.find('#orders').html();
+                    $('#orders').html(newCartContent);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        $(document).on('submit', 'form[data-ajax="true"]', function (event) {
+            event.preventDefault();
+            var $form = $(this);
+            $.ajax({
+                url: $form.attr('action'),
+                method: $form.attr('method'),
+                data: $form.serialize(),
+                success: function (response) {
+                    updateOrders();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    });
+</script>
