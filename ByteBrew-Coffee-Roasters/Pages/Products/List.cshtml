@@ -66,14 +66,14 @@
     {
         <h1>В меню пока нет товаров</h1>
     }
+
 </div>
 
-@* <a asp-page="/Products/ShoppingCart">
-    <h3>
-        Корзина
-    </h3>
-</a> *@
-
+<div class="text-center">
+    <button class="btn btn-primary " id="write-review">
+        <a class="nav-link text-white" asp-area="" asp-page="/Products/CreateReview">Написать отзыв</a>
+    </button>
+</div>
 
 <script>
     $(document).ready(function () {

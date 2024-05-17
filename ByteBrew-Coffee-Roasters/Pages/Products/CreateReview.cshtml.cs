@@ -39,7 +39,7 @@ namespace ByteBrew_Coffee_Roasters.Pages.Products
             _context.ProductReviews.Add(ProductReview);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return Redirect("/Products/CreateReview");
         }
     }
 }

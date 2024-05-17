@@ -85,3 +85,7 @@ h3 {
 .card.p-2.display-flex.justify-content-around {
     border: none !important;
 }
+
+#write-review {
+    color: white;
+}
