@@ -1,0 +1,28 @@
+﻿@page
+@model ByteBrew_Coffee_Roasters.Pages.Products.ListReviewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Продукт
+            </th>
+            <th>
+                Отзыв
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ProductReview) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

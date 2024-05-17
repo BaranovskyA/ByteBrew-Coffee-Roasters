@@ -13,7 +13,6 @@ a:hover {
     color: #fff;
     border-bottom: none;
     width: auto;
-    padding: 15px 39px;
     border: none;
     margin-top: 25px;
     cursor: pointer;
@@ -30,3 +29,4 @@ dt.product-label {
 .product-details {
     font-size: 15px;
 }
+

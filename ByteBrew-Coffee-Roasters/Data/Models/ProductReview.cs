@@ -12,6 +12,11 @@ namespace ByteBrew_Coffee_Roasters.Data.Models
         public Product? Product { get; set; }
         public string Text { get; set; }
 
+        public ProductReview()
+        {
+            Text = string.Empty;
+        }
+
         public ProductReview(Guid productId, string text)
         {
             Id = Guid.NewGuid();

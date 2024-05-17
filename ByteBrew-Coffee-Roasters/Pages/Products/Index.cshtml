@@ -9,20 +9,24 @@
 <link rel="stylesheet" href="~/css/products.css" asp-append-version="true" />
 <h1>Продукты</h1>
 
+<button class="btn btn-primary" id="reviews">
+    <a class="nav-link text-white" asp-area="" asp-page="/Products/ListReview">Отзывы</a>
+</button>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                Название @* @Html.DisplayNameFor(model => model.Product[0].Name) *@
+                Название
             </th>
             <th>
-                Описание @* @Html.DisplayNameFor(model => model.Product[0].Description) *@
+                Описание 
             </th>
             <th>
-                Цена @* @Html.DisplayNameFor(model => model.Product[0].Price) *@
+                Цена 
             </th>
             <th>
-                Изображение @* @Html.DisplayNameFor(model => model.Product[0].Image) *@
+                Изображение 
             </th>
             <th></th>
         </tr>
